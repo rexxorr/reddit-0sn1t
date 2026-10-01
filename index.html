@@ -2,11 +2,87 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=osnitreddit.html">
-  <title>OSNIT // Reddit Intelligence Search</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0f14">
+  <title>OSNIT // Reddit Intelligence Search -Rexx0r</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="r1dit.css">
 </head>
 <body>
-  <p>Opening OSNIT Reddit Intelligence Search...</p>
-  <p>Made my rexx0r</p>
+  <div class="noise"></div>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="OSNIT home">
+      <span class="brand-mark">O</span>
+      <span>info<span class="brand-slash">/</span>REDDIT</span>
+    </a>
+    <a class="repo-link" href="https://github.com/rexxorr/reddit-0sn1t" target="_blank" rel="noreferrer">VIEW SOURCE <span>↗</span></a>
+    
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="eyebrow"><span class="eyebrow-line"></span> OPEN SOURCE INTELLIGENCE / 001</div>
+      <h1>Find the hidden accounts info<br><em>without login</em></h1>
+      <p class="hero-copy">find the hidden reddit info.<br>no login required<br>-Rexx0rrrr</p>
+      <form class="search-shell" id="searchForm">
+        <span class="search-prefix">Enter a Reddit username:</span>
+        <input id="searchInput" type="search" autocomplete="off" placeholder="enter a Reddit username..." aria-label="Search Reddit username">
+        <button type="submit" class="search-button"><span>Search</span><span class="button-arrow">↗</span></button>
+      </form>
+      <div class="search-hints"><span>TRY USER</span><button type="button" data-query="spez">spez</button><button type="button" data-query="civic_signal">civic_signal</button><button type="button" data-query="night_shift">night_shift</button></div>
+    </section>
+
+    <section class="workspace" aria-label="Search results workspace">
+      <aside class="sidebar">
+        <div class="panel-heading"><span>FILTERS</span><span class="mono-label">F_01</span></div>
+        <label class="filter-label" for="subredditFilter">COMMUNITY</label>
+        <select id="subredditFilter">
+          <option value="all">All subreddits</option>
+          <option value="technology">r/technology</option>
+          <option value="worldnews">r/worldnews</option>
+          <option value="science">r/science</option>
+          <option value="space">r/space</option>
+          <option value="cybersecurity">r/cybersecurity</option>
+        </select>
+        <label class="filter-label" for="sortFilter">SORT BY</label>
+        <select id="sortFilter">
+          <option value="newest">Newest first</option>
+          <option value="oldest">Oldest first</option>
+          <option value="engagement">Most engagement</option>
+        </select>
+        <label class="filter-label" for="afterDate">AFTER DATE</label>
+        <input class="date-input" id="afterDate" type="date">
+        <label class="filter-label" for="beforeDate">BEFORE DATE</label>
+        <input class="date-input" id="beforeDate" type="date">
+        <label class="toggle-row" for="includeNsfw"><input id="includeNsfw" type="checkbox"><span>INCLUDE NSFW POSTS</span></label>
+        <div class="filter-block">
+          <div class="filter-label">TIME RANGE</div>
+          <div class="range-options" id="rangeOptions">
+            <button class="range-option active" data-range="all">Any time</button>
+            <button class="range-option" data-range="year">Past year</button>
+            <button class="range-option" data-range="month">Past month</button>
+            <button class="range-option" data-range="week">Past week</button>
+          </div>
+        </div>
+        <div class="sidebar-foot"><span>DATA SOURCES</span><strong>ARCTIC SHIFT + PULLPUSH</strong><span class="foot-rule"></span><span>ARCHIVE STATUS</span><strong id="archiveStatus">LOCAL DEMO INDEX</strong></div>
+      </aside>
+
+      <div class="results-area">
+        <div class="results-toolbar">
+          <div><span class="toolbar-label">QUERY RESULTS</span><strong id="resultCount">08</strong><span class="result-query" id="resultQuery">enter a username to begin</span></div>
+          <a class="reddit-link" id="redditLink" href="https://www.reddit.com/search/" target="_blank" rel="noreferrer">OPEN IN REDDIT <span>↗</span></a>
+        </div>
+        <div class="result-tabs" role="tablist" aria-label="Result type"><button class="result-tab active" data-tab="all" role="tab">ALL <span id="allTabCount">08</span></button><button class="result-tab" data-tab="post" role="tab">POSTS <span id="postTabCount">04</span></button><button class="result-tab" data-tab="comment" role="tab">COMMENTS <span id="commentTabCount">04</span></button></div>
+        <div class="results-list" id="resultsList"></div>
+        <div class="empty-state" id="emptyState" hidden><div class="empty-icon">//</div><h2>No matching signals</h2><p>Try a wider query or reset the community filter.</p><button id="resetButton">RESET SEARCH</button></div>
+        <div class="pagination"><span>SHOWING <strong id="showingCount">06</strong> OF <strong id="totalCount">06</strong> SIGNALS</span><span class="pagination-mark">OSNIT / REDDIT / LIVE</span></div>
+      </div>
+    </section>
+  </main>
+  <footer><span>This project is only for educational purpose. I am a 1st year student<br> i don't have any intension to hurt anyone<br>Thank-you</span><span>BUILD 1.0.4 <i></i> UTC+00</span></footer>
+  <script src="api.js"></script>
+  <script src="reddit.js"></script>
 </body>
 </html>
