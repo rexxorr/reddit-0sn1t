@@ -25,7 +25,6 @@ const emptyState = document.querySelector('#emptyState');
 const redditLink = document.querySelector('#redditLink');
 const archiveStatus = document.querySelector('#archiveStatus');
 const activityText = document.querySelector('#activityText');
-const weatherText = document.querySelector('#weather');
 let activeTab = 'all';
 let activeRange = 'all';
 let records = [...localRecords];
@@ -78,8 +77,5 @@ document.querySelectorAll('[data-query]').forEach(button => button.addEventListe
 document.querySelectorAll('[data-tab]').forEach(button => button.addEventListener('click', () => { document.querySelector('.result-tab.active').classList.remove('active'); button.classList.add('active'); activeTab = button.dataset.tab; render(); }));
 document.querySelectorAll('.range-option').forEach(button => button.addEventListener('click', () => { document.querySelector('.range-option.active').classList.remove('active'); button.classList.add('active'); activeRange = button.dataset.range; render(); }));
 document.querySelector('#resetButton').addEventListener('click', () => { input.value = ''; subredditFilter.value = 'all'; afterDate.value = ''; beforeDate.value = ''; includeNsfw.checked = false; activeTab = 'all'; activeRange = 'all'; records = [...localRecords]; document.querySelector('.result-tab.active').classList.remove('active'); document.querySelector('[data-tab="all"]').classList.add('active'); document.querySelector('.range-option.active').classList.remove('active'); document.querySelector('[data-range="all"]').classList.add('active'); archiveStatus.textContent = 'LOCAL DEMO INDEX'; render(); });
-function updateClock() { const clock = document.querySelector('#clock'); if (clock) clock.textContent = new Intl.DateTimeFormat([], { hour: '2-digit', minute: '2-digit', second: '2-digit' }).format(new Date()); }
-const weatherDescriptions = { 0: 'CLEAR', 1: 'MAINLY CLEAR', 2: 'PARTLY CLOUDY', 3: 'OVERCAST', 45: 'FOG', 48: 'RIME FOG', 51: 'DRIZZLE', 53: 'DRIZZLE', 55: 'DRIZZLE', 61: 'RAIN', 63: 'RAIN', 65: 'HEAVY RAIN', 71: 'SNOW', 73: 'SNOW', 75: 'HEAVY SNOW', 80: 'SHOWERS', 81: 'SHOWERS', 82: 'HEAVY SHOWERS', 95: 'STORM', 96: 'STORM', 99: 'STORM' };
-async function loadWeather() { if (!weatherText) return; try { const weatherResponse = await fetch('https://api.open-meteo.com/v1/forecast?latitude=27.7172&longitude=85.3240&current=temperature_2m,weather_code&temperature_unit=celsius'); if (!weatherResponse.ok) throw new Error('weather unavailable'); const weather = await weatherResponse.json(); const current = weather.current; const description = weatherDescriptions[current.weather_code] || 'CONDITIONS'; weatherText.textContent = `NEPAL ${Math.round(current.temperature_2m)}°C / ${description}`; } catch { weatherText.textContent = 'NEPAL WEATHER UNAVAILABLE'; } }
 function rotateActivityText() { if (!activityText || document.activeElement === input) return; activityIndex = (activityIndex + 1) % activityMessages.length; activityText.classList.remove('activity-swap'); void activityText.offsetWidth; activityText.textContent = activityMessages[activityIndex]; activityText.classList.add('activity-swap'); }
-updateClock(); setInterval(updateClock, 1000); setInterval(rotateActivityText, 3200); loadWeather(); render();
+setInterval(rotateActivityText, 3200); render();
