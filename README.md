@@ -34,7 +34,7 @@ OSNIT searches archived Reddit activity from public archive services and present
 | Styling | CSS3 with custom properties and responsive media queries |
 | Logic | Vanilla JavaScript |
 | Archive APIs | Arctic Shift and PullPush |
-| Hosting | GitHub Pages or any static web host |
+| Hosting | vercel |
 | Authentication | None required |
 
 ## Project Structure
